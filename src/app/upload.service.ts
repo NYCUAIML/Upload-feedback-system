@@ -6,7 +6,7 @@ import {HttpClient,HttpEvent,HttpErrorResponse,HttpEventType} from '@angular/com
 })
 export class UploadService {
 
-  server:string = "http://140.113.59.182:8080/";
+  server:string = "http://192.168.50.18:8080/";
   formData:FormData;
   data:string;
   constructor(private http:HttpClient) { }
@@ -15,5 +15,9 @@ export class UploadService {
     console.log(formData);
     console.log(this.http.post(this.server+"pd",formData));
     return this.http.post(this.server+"pd",formData,{responseType: 'text'})
+  }
+
+  retrain(){
+    return this.http.get(this.server+"retrain",{responseType: 'text'});
   }
 }

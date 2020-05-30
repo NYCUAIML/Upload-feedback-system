@@ -10,7 +10,8 @@ import {UploadService} from './upload.service';
 export class AppComponent {
   title = 'upload';
   profiles:FormGroup;
-  show:any;
+  show: any;
+  ra: any;
   constructor(private fb:FormBuilder, private fserve:UploadService){}
 
   ngOnInit(){
@@ -32,6 +33,13 @@ export class AppComponent {
     this.fserve.upload(formd).subscribe(res => {
       console.log(res);
       this.show = res;
-    })
+    });
+  }
+
+  ret(){
+    this.fserve.retrain().subscribe(data =>{
+      console.log(data);
+      this.ra = data;
+    });
   }
 }
